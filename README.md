@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Site da Empreiteira
 
-## Getting Started
+Um site moderno e profissional para uma empreiteira, com funcionalidade de geração de orçamentos em PDF.
 
-First, run the development server:
+## Tecnologias Utilizadas
 
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- Framer Motion (para animações)
+- jsPDF (para geração de PDFs)
+
+## Funcionalidades
+
+- Design moderno e responsivo
+- Navegação intuitiva
+- Formulário de orçamento automático
+- Geração de PDF com detalhes do orçamento
+- Interface otimizada para dispositivos móveis
+
+## Como Executar o Projeto
+
+1. Clone o repositório:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone [URL_DO_REPOSITORIO]
+cd [NOME_DO_DIRETORIO]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instale as dependências:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Execute o servidor de desenvolvimento:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Acesse o site em `http://localhost:3000`
 
-## Learn More
+## Estrutura do Projeto
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  ├── app/                    # Páginas da aplicação
+  │   ├── page.tsx           # Página inicial
+  │   └── orcamento/         # Página de orçamentos
+  ├── components/            # Componentes reutilizáveis
+  │   ├── Navbar.tsx        # Navegação
+  │   ├── OrcamentoForm.tsx # Formulário de orçamento
+  │   └── ui/               # Componentes de UI
+  └── styles/               # Estilos globais
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Personalização
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Para personalizar os preços base dos serviços, edite o objeto `PRECOS_BASE` no arquivo `src/components/OrcamentoForm.tsx`.
 
-## Deploy on Vercel
+## Licença
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este projeto está sob a licença MIT.
