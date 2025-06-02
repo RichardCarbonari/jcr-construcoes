@@ -10,8 +10,6 @@ interface ProjectCardProps {
   title: string;
   description: string;
   imageUrl: string;
-  category: string;
-  completionDate: string;
 }
 
 export function ProjectCard({
@@ -19,8 +17,6 @@ export function ProjectCard({
   title,
   description,
   imageUrl,
-  category,
-  completionDate,
 }: ProjectCardProps) {
   return (
     <motion.div
@@ -47,16 +43,8 @@ export function ProjectCard({
         </div>
       </div>
       <Link href={`/portfolio/${id}`} className="block p-6 hover:bg-primary-50/50 transition-colors">
-        <div className="flex justify-between items-start mb-3">
-          <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
-          <span className="text-sm text-primary-600 px-3 py-1 bg-primary-100 rounded-full">
-            {category}
-          </span>
-        </div>
-        <p className="text-gray-600 mb-4">{description}</p>
-        <div className="text-sm text-gray-500">
-          Concluído em: {completionDate}
-        </div>
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
+        <p className="text-gray-600">{description}</p>
       </Link>
     </motion.div>
   );

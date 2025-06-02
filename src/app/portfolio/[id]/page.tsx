@@ -3,14 +3,16 @@
 import { Button } from "@/components/ui/button";
 import { projects } from "@/data/projects";
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Grid, MapPin, Ruler } from "lucide-react";
+import { ArrowLeft, MapPin, Ruler, Calendar } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { useState, useCallback } from "react";
+import { use } from "react";
 
 export default function ProjectDetails({ params }: { params: { id: string } }) {
-  const project = projects.find(p => p.id === parseInt(params.id));
+  const id = use(Promise.resolve(params.id));
+  const project = projects.find(p => p.id === parseInt(id));
   const [selectedImage, setSelectedImage] = useState(0);
 
   const handleWhatsAppClick = useCallback(() => {
@@ -47,7 +49,6 @@ export default function ProjectDetails({ params }: { params: { id: string } }) {
           animate={{ opacity: 1, y: 0 }}
           className="mb-12"
         >
-          <span className="text-primary-600 font-medium">{project.category}</span>
           <h1 className="text-4xl font-bold mt-2 mb-4 text-gray-900">{project.title}</h1>
           <p className="text-gray-600 text-lg max-w-3xl">
             {project.description}
@@ -71,9 +72,8 @@ export default function ProjectDetails({ params }: { params: { id: string } }) {
             />
           </div>
 
-          {/* Miniaturas e Informações */}
+          {/* Miniaturas */}
           <div className="lg:col-span-4 space-y-6">
-            {/* Miniaturas */}
             {project.gallery && (
               <div className="grid grid-cols-2 gap-4">
                 {project.gallery.map((image, index) => (
@@ -96,71 +96,7 @@ export default function ProjectDetails({ params }: { params: { id: string } }) {
                 ))}
               </div>
             )}
-
-            {/* Informações do Projeto */}
-            <div className="bg-white p-6 rounded-xl shadow-lg space-y-4">
-              {project.location && (
-                <div className="flex items-center gap-3 text-gray-900">
-                  <MapPin className="text-primary-600" />
-                  <span>{project.location}</span>
-                </div>
-              )}
-              {project.area && (
-                <div className="flex items-center gap-3 text-gray-900">
-                  <Ruler className="text-primary-600" />
-                  <span>Área: {project.area}</span>
-                </div>
-              )}
-              {project.duration && (
-                <div className="flex items-center gap-3 text-gray-900">
-                  <Calendar className="text-primary-600" />
-                  <span>Duração: {project.duration}</span>
-                </div>
-              )}
-              <div className="flex items-center gap-3 text-gray-900">
-                <Grid className="text-primary-600" />
-                <span>Concluído em: {project.completionDate}</span>
-              </div>
-            </div>
           </div>
-        </motion.div>
-
-        {/* Características e Depoimento */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12"
-        >
-          {project.features && (
-            <div>
-              <h2 className="text-2xl font-bold mb-6 text-gray-900">Características</h2>
-              <ul className="grid grid-cols-2 gap-4">
-                {project.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-2 text-gray-900">
-                    <div className="w-2 h-2 rounded-full bg-primary-600" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {/* Depoimento */}
-          {project.testimonial && (
-            <div>
-              <h2 className="text-2xl font-bold mb-6 text-gray-900">Depoimento do Cliente</h2>
-              <blockquote className="bg-white p-6 rounded-xl shadow-lg">
-                <p className="text-gray-600 italic mb-4">
-                  "{project.testimonial.text}"
-                </p>
-                <footer>
-                  <strong className="block text-gray-900">{project.testimonial.author}</strong>
-                  <span className="text-gray-500">{project.testimonial.role}</span>
-                </footer>
-              </blockquote>
-            </div>
-          )}
         </motion.div>
 
         {/* CTA */}
