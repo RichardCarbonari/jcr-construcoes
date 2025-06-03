@@ -137,7 +137,7 @@ export default function Home() {
             <div className="space-y-4 text-gray-200">
               <p>
                 A JCR Construções nasceu de um sonho familiar e de uma vocação pela construção civil. 
-                Fundada há mais de 15 anos por José Carlos Mano Rabelo, a empresa carrega no nome suas raízes e valores.
+                Fundada há mais de 15 anos por José Carlos Albano Rabelo, a empresa carrega no nome suas raízes e valores.
               </p>
               <p>
                 Hoje é administrada por seu filho João, que desde 2018 vem ampliando a atuação da JCR 

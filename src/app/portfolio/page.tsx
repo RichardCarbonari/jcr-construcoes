@@ -36,8 +36,6 @@ export default function PortfolioPage() {
               title={project.title}
               description={project.description}
               imageUrl={project.imageUrl}
-              category={project.category}
-              completionDate={project.completionDate}
             />
           ))}
         </motion.div>
